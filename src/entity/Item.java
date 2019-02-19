@@ -1,6 +1,6 @@
 package entity;
 
-public class Item {
+public class Item{
 	
 	private Long id;
 	private Double quantity;

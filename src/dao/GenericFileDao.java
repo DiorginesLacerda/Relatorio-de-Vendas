@@ -15,7 +15,7 @@ public class GenericFileDao<T>{
 		// TODO Auto-generated constructor stub
 	}
 	
-	public List<String> readFile(String namefile){
+	public List<String> readFile(String namefile) throws Exception{
 		try {
 			FileReader file = new FileReader(namefile);
 			BufferedReader buffer = new BufferedReader(file);
@@ -28,15 +28,14 @@ public class GenericFileDao<T>{
 			file.close();
 			return response;
 		} catch (FileNotFoundException e) {
-			// TODO: handle exception
+			throw new Exception("Arquivo "+namefile+" não foi encontrado"); 
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new Exception("Erro ao ler o arquivo "+namefile+". Verificar se o mesmo está dentro do padrão correto de dados");
+			
 		}
-		return null;
 	}
 	
-	public void saveInFile(T t,String fileName) {
+	public void saveInFile(T t,String fileName) throws Exception {
 		try {
 			FileWriter fw = new FileWriter(fileName);
 			PrintWriter pw = new PrintWriter(fw);
@@ -45,7 +44,7 @@ public class GenericFileDao<T>{
 			pw.close();
 			
 		} catch (IOException e) {
-			// TODO: handle exception
+			throw new Exception("Erro ao Salvar o arquivo "+fileName+"detalhes\n"+e);
 		}
 	}
 }

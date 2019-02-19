@@ -6,5 +6,5 @@ import entity.Item;
 
 public interface IItemRepository extends IRepository<Item> {
 
-	public List<Item> getAll(String input);
+	public List<Item> getAll(String input)throws Exception;
 }

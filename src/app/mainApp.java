@@ -52,12 +52,12 @@ public class mainApp {
 		files.forEach(f->readFile(f));
 	}
 	
-	private static void readFile(String file) {
+	private static void readFile(String file){
 		try {
 			Context context = new Context(file);
 			RelatorioService relatorioService = new RelatorioService(context);
 			relatorioService.performSaveRelatorio();
-		} catch (IOException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

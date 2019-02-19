@@ -1,6 +1,6 @@
 package entity;
 
-public class Vendedor {
+public class Vendedor{
 
 	private String cpf;
 	private String name;

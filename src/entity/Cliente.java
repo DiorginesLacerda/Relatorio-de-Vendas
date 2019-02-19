@@ -1,7 +1,7 @@
 package entity;
 
-public class Cliente {
-
+public class Cliente{
+	
 	private String cnpj;
 	private String name;
 	private String businessArea;

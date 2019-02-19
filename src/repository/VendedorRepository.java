@@ -2,6 +2,7 @@ package repository;
 
 
 import entity.Vendedor;
+import util.Number;
 
 public class VendedorRepository implements IVendedorRepository{
 
@@ -12,8 +13,8 @@ public class VendedorRepository implements IVendedorRepository{
 	}
 
 	@Override
-	public Vendedor getValueObject(String[] input) {
-		return new Vendedor(input[1], input[2], Double.parseDouble(input[3]));
+	public Vendedor getValueObject(String[] input) throws Exception {
+		return new Vendedor(input[1], input[2], Number.strToDouble(input[3]));
 	}
 
 }

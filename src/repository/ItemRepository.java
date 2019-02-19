@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import entity.Item;
+import util.Number;
 
 public class ItemRepository implements IItemRepository{
 
@@ -20,14 +21,14 @@ public class ItemRepository implements IItemRepository{
 	}
 
 	@Override
-	public List<Item> getAll(String input) {
+	public List<Item> getAll(String input) throws Exception {
 		String[] txtItems = input.substring(1, input.length() - 1).split(",");
 		List<Item> items = new ArrayList<>();
 
 		for (String item : txtItems) {
 			String[] valuesItem = item.split("-");
-			items.add(new Item(Long.parseLong(valuesItem[0]), Double.parseDouble(valuesItem[1]),
-					Double.parseDouble(valuesItem[2])));
+			items.add(new Item(Number.strToLong(valuesItem[0]), Number.strToDouble(valuesItem[1]),
+					Number.strToDouble(valuesItem[2])));
 		}
 		return items;
 	}

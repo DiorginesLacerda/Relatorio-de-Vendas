@@ -1,6 +1,6 @@
 package entity;
 
-public class Relatorio {
+public class Relatorio{
 
 	private int qtdClients;
 	private int qtdSalesMan;

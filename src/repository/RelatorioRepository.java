@@ -7,8 +7,6 @@ import entity.Relatorio;
 
 public class RelatorioRepository implements IRelatorioRepository{
 	
-	//private final String PATH_OUT = "./data/out/";
-	
 	Context context;
 	
 	GenericFileDao<Relatorio> dao = new GenericFileDao<>();
@@ -18,7 +16,7 @@ public class RelatorioRepository implements IRelatorioRepository{
 	}
 	
 	@Override
-	public void save(Relatorio relatorio) {
+	public void save(Relatorio relatorio) throws Exception {
 		String name = context.getNameFile().substring(0,(context.getNameFile().length()-4));
 		String fileName = mainApp.PATH_OUT +name+".done.dat";
 		dao.saveInFile(relatorio, fileName);

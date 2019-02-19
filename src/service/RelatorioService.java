@@ -20,7 +20,7 @@ public class RelatorioService {
 	}
 	
 	
-	public void performSaveRelatorio() {
+	public void performSaveRelatorio() throws Exception {
 		repository.save(new Relatorio(
 				context.getClientes().size(),
 				context.getVendedores().size(),

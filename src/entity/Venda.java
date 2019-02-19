@@ -3,7 +3,7 @@ package entity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Venda {
+public class Venda{
 	private long id;
 	private List<Item> items;
 	private String salemanName;

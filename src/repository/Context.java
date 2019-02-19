@@ -1,6 +1,5 @@
 package repository;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +11,6 @@ import entity.Vendedor;
 
 public class Context {
 
-	//private final String PATH_IN = "./data/in/";
 	private GenericFileDao<String>dao;
 	private ClienteRepository clienteRepository;
 	private VendedorRepository vendedorRepository;
@@ -24,7 +22,7 @@ public class Context {
 
 	private String nameFile;
 	
-	public Context(String nameFile) throws IOException {
+	public Context(String nameFile) throws Exception {
 		this.nameFile = nameFile;
 		this.clienteRepository = new ClienteRepository();
 		this.vendedorRepository = new VendedorRepository();
@@ -37,7 +35,7 @@ public class Context {
 		
 	}
 
-	private void readFile(String nameFile) throws IOException {
+	private void readFile(String nameFile) throws Exception {
 
 		String pathFile = mainApp.PATH_IN+nameFile;
 		List<String> dataInput = dao.readFile(pathFile);
@@ -45,11 +43,23 @@ public class Context {
 		dataInput.forEach(r ->{
 			String[] content = r.split("ç");
 			if (content[0].equals("001")) {
-				vendedores.add(vendedorRepository.getValueObject(content));
+				try {
+					vendedores.add(vendedorRepository.getValueObject(content));
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					System.out.println("Erro ao criar o Vendedor a partir dos dados "+ content+
+							e);
+				}
 			} else if (content[0].equals("002")) {
 				clientes.add(clienteRepository.getValueObject(content));
 			} else if (content[0].equals("003")) {
-				vendas.add(vendaRepository.getValueObject(content));
+				try {
+					vendas.add(vendaRepository.getValueObject(content));
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					System.out.println("Erro ao criar a Venda a partir dos dados "+ content+
+							e);
+				}
 			}
 		});
 	}
